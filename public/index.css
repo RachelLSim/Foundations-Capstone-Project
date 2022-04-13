@@ -25,6 +25,10 @@
     width: 200px;
 }
 
+.body {
+    background: linear-gradient(to-right, yellow)
+}
+
 #cardField {
     padding: 20px;
     display: flex;
@@ -49,5 +53,11 @@
     padding-right: 10px;
     margin: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
