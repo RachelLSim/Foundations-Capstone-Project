@@ -9,8 +9,8 @@ app.use(express.json())
 app.use(cors())
 
 
-app.post('/api/image', listCtrl.addImage)
-app.post('/api/caption', listCtrl.addCaption)
+app.post('/api/photos', listCtrl.addPhotoCard)
+//app.delete('/api/photos')
 
 
 const PORT = process.env.PORT || 4025

@@ -7,24 +7,26 @@ module.exports = {
         res.status(200).send(images, captions)
     },
 
-    addImage: (req, res) => {
-        let item = {
-            id: id,
-            item: req.body.item
+    addPhoto: (req, res) => {
+        let { url, caption } = req.body
+        let newPhotoCard = {
+            id: globalId,
+            url,
+            caption
         }
-        images.push(item)
+        photos.push(newPhotoCard)
         id++
-        res.status(200).send(list)
+        res.status(200).send(photos)
     },
 
-    addcaption: (req, res) => {
-        let item = {
-            id: id,
-            item: req.body.item
-        }
-        captions.push(item)
-        id++
-        res.status(200).send(list)
+    // addcaption: (req, res) => {
+    //     let item = {
+    //         id: id,
+    //         item: req.body.item
+    //     }
+    //     captions.push(item)
+    //     id++
+    //     res.status(200).send(list)
     }
 
     // deleteItem: (req, res) => {
