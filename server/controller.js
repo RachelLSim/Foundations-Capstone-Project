@@ -17,7 +17,7 @@ module.exports = {
         photos.push(newPhotoCard)
         id++
         res.status(200).send(photos)
-    },
+    }
 
     // addcaption: (req, res) => {
     //     let item = {
@@ -27,7 +27,7 @@ module.exports = {
     //     captions.push(item)
     //     id++
     //     res.status(200).send(list)
-    }
+    // }
 
     // deleteItem: (req, res) => {
     //     const { id } = req.params

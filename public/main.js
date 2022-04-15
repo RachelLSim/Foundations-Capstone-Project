@@ -9,11 +9,11 @@ const form = document.querySelector('input')
 
 
 const photosCallback = ({ data: photos }) => displayPhotos(photos)
-const errorCallback = err => console.log(err.response.data)
+const errCallback = err => console.log(err.response.data)
 
 //ENDPOINTS/axios calls
-const getAllPhotoCards = axios.get('http://localhost4024/api/photos').then(photosCallback).catch(errorCallback)
-const createPhotoCard = body => axios.post('http://localhost4024/api/photos').then(photosCallback).catch(errorCallback)
+const getAllPhotoCards = () => axios.get('http://localhost4024/api/photos').then(photosCallback).catch(errCallback)
+const createPhoto = body => axios.post('http://localhost4024/api/photos').then(photosCallback).catch(errCallback)
 
 
 
@@ -28,11 +28,24 @@ function submitHandler(e) {
     caption: caption.value
     }
     
-    createPhotoCard(photoCard)
+    createPhoto(photoCard)
 
     imageUrl.value = ''
     caption = ''
 
+}
+
+function createPhotoCard(photo) {
+    const photoCard = document.createElement('div')
+    photoCard.classList.add('photo-card')
+
+    photoCard.innerHTML = 
+    `
+    <img alt='photo display' src=${photo.url} class='photo-display'/>
+        <p class='photo-caption'>${photo.caption}</p>
+    `
+
+    cardField.appendChild(photoCard)
 }
 
 function displayPhotos(arr) {

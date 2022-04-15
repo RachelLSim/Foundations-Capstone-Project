@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const listCtrl = require('./server/controller')
+const { getList, addPhoto} = require('./server/controller')
 
 const app = express()
 
@@ -9,7 +9,8 @@ app.use(express.json())
 app.use(cors())
 
 
-app.post('/api/photos', listCtrl.addPhotoCard)
+app.get('/api/photos', getList)
+app.post('/api/photos', addPhoto)
 //app.delete('/api/photos')
 
 
