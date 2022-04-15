@@ -4,7 +4,7 @@ let globalId = 3
 module.exports = {
 
     getList: (req, res) => {
-        res.status(200).send(images, captions)
+        res.status(200).send(photos)
     },
 
     addPhoto: (req, res) => {

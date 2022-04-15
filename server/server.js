@@ -14,6 +14,6 @@ app.post('/api/photos', addPhoto)
 //app.delete('/api/photos')
 
 
-const PORT = process.env.PORT || 4025
+const PORT = process.env.PORT || 4024
 
 app.listen(PORT, () => { console.log(`Listening on ${PORT}`)})

@@ -1,12 +1,6 @@
-//functions I may not need:
-// const addPhotoCard = (url) => {
-//     axios.post('http://localhost:4025/api/image', photoCard).then(res => res.data.forEach(elem => createItem(elem)))
-// }
 // const { default: axios } = require("axios")
-
 const cardField = document.querySelector('cardField')
 const form = document.querySelector('input')
-
 
 const photosCallback = ({ data: photos }) => displayPhotos(photos)
 const errCallback = err => console.log(err.response.data)
