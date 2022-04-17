@@ -5,26 +5,28 @@ module.exports = {
 
     getList: (req, res) => {
         res.status(200).send(photos)
+        console.log("list")
     },
 
     addPhoto: (req, res) => {
-        let { url, caption } = req.body
+        console.log('goodbye')
+        let { imageURL, caption } = req.body
         let newPhotoCard = {
             id: globalId,
-            url,
+            imageURL,
             caption
         }
         photos.push(newPhotoCard)
-        id++
         res.status(200).send(photos)
+        globalId++
     }
-
+    
     // deletePhoto: (req, res) => {
-    //     const { id } = req.params
-    //     let indexToDelete = null
-
-    //     list.forEach((item, index) => {
-    //         if(item.id === +id){
+        //     const { id } = req.params
+        //     let indexToDelete = null
+        
+        //     list.forEach((item, index) => {
+            //         if(item.id === +id){
     //             indexToDelete = index
     //             return
     //         }
@@ -32,6 +34,6 @@ module.exports = {
     //     list.splice(indexToDelete, 1)
     //     res.status(200).send(list)
     // }
-
-
+    
+    
 }

@@ -1,6 +1,6 @@
 // const { default: axios } = require("axios")
 const cardField = document.getElementById('cardField')
-const form = document.querySelector('input')
+const form = document.querySelector('#input')
 
 const photosCallback = ({ data: photos }) => {
     console.log(photos)
@@ -8,39 +8,42 @@ const photosCallback = ({ data: photos }) => {
 
 //ENDPOINTS/axios calls
 const getAllPhotoCards = () => axios.get('http://localhost:5502/api/photos').then(photosCallback).catch(err => console.log(err))
-const createPhoto = body => axios.post('http://localhost:5502/api/photos').then(photosCallback).catch(err => console.log(err))
+const createPhoto = body => axios.post('http://localhost:5502/api/photos', body).then(photosCallback).catch(err => console.log(err))
 
 
 
 function submitHandler(e) {
     e.preventDefault()
+    let imageURL = document.querySelector('#addPhoto')
+    let caption = document.querySelector('#addCaption')
     
-    let imageUrl = document.querySelector('addPhoto')
-    let caption = document.querySelector('addCaption')
     
-    let photoCard = {
-    url: imageUrl.value,
-    caption: caption.value
+    let bodyObj = {
+        imageURL: imageURL.value,
+        caption: caption.value
     }
-    
-    createPhoto(photoCard)
+    console.log(bodyObj)
+    createPhoto(bodyObj)
+    console.log('hello')
 
-    imageUrl.value = ''
+    imageURL.value = ''
     caption = ''
 
 }
 
 function createPhotoCard(photo) {
-    console.log(photo)
+    // console.log(photo)
     const photoCard = document.createElement('div')
-    photoCard.id = 'photoCard'
+    // photoCard.id = 'photoCard'
     photoCard.classList.add('photo-card')
 
     photoCard.innerHTML = 
     `
-    
-    <img alt='photo display' src=${photo.imageURL} class='photo-display'/>
-    <p class='photo-caption'>${photo.caption}</p>
+    <section class='photoCard'>
+    <button class="deleteButton">x</button>
+        <img alt='photo display' src=${photo.imageURL} class='photo-display'/>
+        <p class='photo-caption'>${photo.caption}</p>
+    </section>
     `
 
     cardField.appendChild(photoCard)

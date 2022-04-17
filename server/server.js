@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const { getList, addPhoto} = require('./controller')
+const { getList, addPhoto } = require('./controller.js')
 
 const app = express()
 
@@ -14,6 +14,6 @@ app.post('/api/photos', addPhoto)
 //app.delete('/api/photos')
 
 
-const PORT = process.env.PORT || 5502
+const PORT = 5502
 
 app.listen(PORT, () => { console.log(`Listening on ${PORT}`)})
