@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const { getList, addPhoto } = require('./controller.js')
+const { getList, addPhoto, deletePhoto, } = require('./controller.js')
 
 const app = express()
 
@@ -11,7 +11,8 @@ app.use(cors())
 
 app.get('/api/photos', getList)
 app.post('/api/photos', addPhoto)
-//app.delete('/api/photos')
+app.delete('/api/photos/:id', deletePhoto)
+// app.put('/api/header/', changeHeader)
 
 
 const PORT = 5502

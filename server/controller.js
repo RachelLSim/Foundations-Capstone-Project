@@ -9,7 +9,6 @@ module.exports = {
     },
 
     addPhoto: (req, res) => {
-        console.log('goodbye')
         let { imageURL, caption } = req.body
         let newPhotoCard = {
             id: globalId,
@@ -19,20 +18,19 @@ module.exports = {
         photos.push(newPhotoCard)
         res.status(200).send(photos)
         globalId++
-    }
+    },
     
-    // deletePhoto: (req, res) => {
-        //     const { id } = req.params
-        //     let indexToDelete = null
-        
-        //     list.forEach((item, index) => {
-            //         if(item.id === +id){
-    //             indexToDelete = index
-    //             return
-    //         }
-    //     })
-    //     list.splice(indexToDelete, 1)
-    //     res.status(200).send(list)
+    deletePhoto: (req, res) => {
+        console.log('deletingStuff')
+        let index = photos.findIndex(photo => photo.id === +req.params.id)
+        photos.splice(index, 1)
+        res.status(200).send(photos)
+    },
+
+    // changeHeader: (req, res) => {
+    //     let { headerURL } = req.body
+
+    //     headerURL.replace('')
     // }
     
     

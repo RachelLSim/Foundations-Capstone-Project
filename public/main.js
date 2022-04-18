@@ -1,16 +1,33 @@
-// const { default: axios } = require("axios")
 const cardField = document.getElementById('cardField')
 const form = document.querySelector('#input')
+const headerForm = document.querySelector('#headerForm')
+// let headerUpdated = document.querySelector('header')
 
 const photosCallback = ({ data: photos }) => {
-    console.log(photos)
     displayPhotos(photos)}
 
-//ENDPOINTS/axios calls
+////////ENDPOINTS/axios calls/////////
 const getAllPhotoCards = () => axios.get('http://localhost:5502/api/photos').then(photosCallback).catch(err => console.log(err))
 const createPhoto = body => axios.post('http://localhost:5502/api/photos', body).then(photosCallback).catch(err => console.log(err))
+const deletePhoto = id => axios.delete(`http://localhost:5502/api/photos/${id}`).then(photosCallback).catch(err => console.log(err))
+
+// const changeHeader = body => axios.put('http://localhost:5502/api/header/', body).then(photosCallback).catch(err => console.log(err))
 
 
+/////////submitHandlers//////////////
+
+// function headerSubHandler(e) {
+//     e.preventDefault()
+//     let headerURL = document.querySelector('#headerInput')
+
+//     let thisObj = {
+//         headerURL: headerURL.value
+//     }
+
+//     changeHeader(thisObj)
+
+//     headerURL.value = ''
+// }
 
 function submitHandler(e) {
     e.preventDefault()
@@ -22,29 +39,29 @@ function submitHandler(e) {
         imageURL: imageURL.value,
         caption: caption.value
     }
-    console.log(bodyObj)
+    
     createPhoto(bodyObj)
-    console.log('hello')
-
+    
     imageURL.value = ''
-    caption = ''
+    caption.value = ''
 
 }
 
+///////////other functions////////////////
 function createPhotoCard(photo) {
-    // console.log(photo)
     const photoCard = document.createElement('div')
-    // photoCard.id = 'photoCard'
     photoCard.classList.add('photo-card')
 
     photoCard.innerHTML = 
     `
     <section class='photoCard'>
-    <button class="deleteButton">x</button>
+    
+    <button id="deleteButton" onclick='deletePhoto(${photo.id})'>x</button>
         <img alt='photo display' src=${photo.imageURL} class='photo-display'/>
         <p class='photo-caption'>${photo.caption}</p>
-    </section>
-    `
+        </section>
+        `
+        // <button id='editCaption' onclick='editCaption(${photo.caption})'>edit caption</button)
 
     cardField.appendChild(photoCard)
 }
@@ -56,7 +73,9 @@ function displayPhotos(arr) {
     }
 }
 
-//addEventListener
+//////////EventListeners/////////////////
+// headerForm.addEventListener('submit', headerSubHandler)
 form.addEventListener('submit', submitHandler)
+
 
 getAllPhotoCards()

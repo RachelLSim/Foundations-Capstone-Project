@@ -9,7 +9,14 @@
     <title>Photo Suite</title>
 </head>
 <body>
-    <header class="header" img src="https://images.unsplash.com/photo-1488188840666-e2308741a62f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8b2NlYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60">Photo Suite</header>
+    <header>
+        <h1>Photo Suite</h1>
+        <h4>Collect Inspiration</h2> 
+        <form id="headerForm">
+            <input type='text'id='headerInput' placeholder='Change header (URL)'/>
+            <button id='headerSubmit'>Submit</button>
+        </form>
+    </header>
     <main>
         <div id="cardField">
             
@@ -19,11 +26,11 @@
                 <input 
                     type='text'
                     id='addPhoto' 
-                    placeholder='Enter image URL address here'/>
+                    placeholder='Enter Image URL'/>
                 <input 
                     type='text'
                     id='addCaption'
-                    placeholder='Add caption here'/></br>
+                    placeholder='Add Caption'/></br>
                 <button>Submit</button>
             </form>
         </section>
