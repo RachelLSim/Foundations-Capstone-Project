@@ -2,13 +2,15 @@
     {
         "id": 1,
         "imageURL" : "https://media.istockphoto.com/photos/group-of-multi-ethnic-friends-having-fun-at-the-beach-picture-id165764533?k=6&m=165764533&s=612x612&w=0&h=2HYHzhGNSIJp7ytSCWS320JPDJLjlc7Oe5SX62KJsco=",
-        "caption": "Fun in the sun"
+        "caption": "Fun in the sun",
+        "tag": "vacation"
     }, 
     
     {
       "id": 2,
       "imageURL": "https://images.unsplash.com/photo-1479030160180-b1860951d696?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-      "caption": "My favorite vacation"
+      "caption": "My favorite vacation",
+      "tag": "vacation"
     }
       
 ]

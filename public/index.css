@@ -43,19 +43,22 @@ h4 {
     justify-content: center;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 20px;
-    
-}
-#addCaption{
-    text-align: center;
-}
-#photo-caption{
-    position:absolute;
-    bottom: 10px;
 }
 
 #addPhoto{
     text-align: center;
-    max-height: 80%;
+}
+
+#addCaption {
+    text-align: center;
+}
+
+#tag {
+    text-align: center;
+}
+
+.photo-tag {
+    font-size: 8pt;
 }
 
 #deleteButton {
@@ -85,12 +88,22 @@ main {
 
 #editCaption {
     position: absolute;
-    bottom: 5px;
+    bottom: 6px;
+    height: 22px;
+    font-size: 8pt;
 
 }
 
+#newCaption {
+    position: absolute;
+    bottom:34px;
+    height: 22px;
+    font-size: 8pt;
+    text-align: center;
+}
+
 .photo-display{
-    max-height: 70%;
+    max-height: 60%;
     max-width: 80%;
 }
 
@@ -104,6 +117,7 @@ main {
     align-items: center;
     justify-content: center;
     margin: 20px;
+    font-size: large;
     
 }
 
