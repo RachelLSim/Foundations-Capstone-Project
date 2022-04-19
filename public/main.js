@@ -2,7 +2,8 @@ const cardField = document.getElementById('cardField')
 const form = document.querySelector('#input')
 const header = document.querySelector('header')
 const headerForm = document.querySelector('#headerForm')
-// const newCaption = document.querySelector('#newCaption').value
+
+
  
 const photosCallback = ({ data: photos }) => {
     displayPhotos(photos)}
@@ -12,9 +13,7 @@ const getAllPhotoCards = () => axios.get('http://localhost:5502/api/photos').the
 const createPhoto = body => axios.post('http://localhost:5502/api/photos', body).then(photosCallback).catch(err => console.log(err))
 const deletePhoto = id => axios.delete(`http://localhost:5502/api/photos/${id}`).then(photosCallback).catch(err => console.log(err))
 
-// const editCaption = (id, newCaption) => axios.put(`http://localhost:5502/api/photos/${id}`, `${newCaption}`)
 
-//when a user provides an image url and slicks on submit button the background header image will be changed
 
 /////////submitHandlers//////////////
 function submitHandler(e) {
@@ -46,6 +45,12 @@ function headerSubHandler(e) {
     headerURL.value = ''
 }
 
+function sortSubmit(click) {
+    click.preventDefault()
+    sortPhotoCards()
+}
+
+
 ///////////other functions////////////////
 function createPhotoCard(photo) {
     const photoCard = document.createElement('div')
@@ -57,14 +62,13 @@ function createPhotoCard(photo) {
         <button id="deleteButton" onclick='deletePhoto(${photo.id})'>x</button>
         <img alt='photo display' src=${photo.imageURL} class='photo-display'/>
         <p class='photo-caption'>${photo.caption}</p>
-        <p class='photo-tag'>#${photo.tag}</p>
+        <p class='photo-tag'>tags: ${photo.tag}</p>
     </section>
     `
 
     cardField.appendChild(photoCard)
 }
-{/* <input type='text' id='newCaption' placeholder='Enter New Caption'/>
-<button id='editCaption' >edit caption</button) */}
+
 
 function displayPhotos(arr) {
     cardField.innerHTML = ``
@@ -76,6 +80,7 @@ function displayPhotos(arr) {
 //////////EventListeners/////////////////
 headerForm.addEventListener('submit', headerSubHandler)
 form.addEventListener('submit', submitHandler)
+
 
 
 getAllPhotoCards()
