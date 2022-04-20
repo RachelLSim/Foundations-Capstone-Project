@@ -1,10 +1,26 @@
-const photos = require('./fakeDatabase.json')
+const photos = require('./db.json')
 let globalId = 3
 
 module.exports = {
 
     getList: (req, res) => {
-        res.status(200).send(photos)
+        if(req.query.sortByTag === 'true'){ 
+            photos.sort(function(a,b) {
+                return a.tag.localeCompare(b.tag);
+            })
+            
+            res.status(200).send(photos)
+        }
+        if(req.query.sortByCaption === 'true'){ 
+            photos.sort(function(a,b) {
+                return a.caption.localeCompare(b.caption);
+            })
+            
+            res.status(200).send(photos)
+        }
+        else{
+            res.status(200).send(photos)
+        }
     },
 
     addPhoto: (req, res) => {
@@ -24,11 +40,6 @@ module.exports = {
         let index = photos.findIndex(photo => photo.id === +req.params.id)
         photos.splice(index, 1)
         res.status(200).send(photos)
-    },
-
-    // editCaption: (req, res) => {
-    //     // let { newCaption } = req.body
-    // }
-    
+    },    
     
 }

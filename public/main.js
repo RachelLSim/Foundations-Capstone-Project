@@ -2,20 +2,20 @@ const cardField = document.getElementById('cardField')
 const form = document.querySelector('#input')
 const header = document.querySelector('header')
 const headerForm = document.querySelector('#headerForm')
-
+const sortTags = document.querySelector('#sortTags')
+const sortCaptions = document.querySelector('#sortCaptions')
 
  
 const photosCallback = ({ data: photos }) => {
     displayPhotos(photos)}
 
-////////ENDPOINTS/axios calls/////////
 const getAllPhotoCards = () => axios.get('http://localhost:5502/api/photos').then(photosCallback).catch(err => console.log(err))
 const createPhoto = body => axios.post('http://localhost:5502/api/photos', body).then(photosCallback).catch(err => console.log(err))
 const deletePhoto = id => axios.delete(`http://localhost:5502/api/photos/${id}`).then(photosCallback).catch(err => console.log(err))
+const sortPhotoTags = () => axios.get('http://localhost:5502/api/photos?sortByTag=true').then(photosCallback).catch(err => console.log(err))
+const sortPhotoCaptions = () => axios.get('http://localhost:5502/api/photos?sortByCaption=true').then(photosCallback).catch(err => console.log(err))
 
 
-
-/////////submitHandlers//////////////
 function submitHandler(e) {
     e.preventDefault()
     let imageURL = document.querySelector('#addPhoto')
@@ -45,13 +45,19 @@ function headerSubHandler(e) {
     headerURL.value = ''
 }
 
-function sortSubmit(click) {
-    click.preventDefault()
-    sortPhotoCards()
+function sortTagHandler(e) {
+    e.preventDefault()
+    console.log('sort clicked!')
+    sortPhotoTags()
+}
+
+function sortCaptionHandler(e) {
+    e.preventDefault()
+    console.log('caption sort clicked!')
+    sortPhotoCaptions()
 }
 
 
-///////////other functions////////////////
 function createPhotoCard(photo) {
     const photoCard = document.createElement('div')
     photoCard.classList.add('photo-card')
@@ -77,10 +83,11 @@ function displayPhotos(arr) {
     }
 }
 
-//////////EventListeners/////////////////
+
 headerForm.addEventListener('submit', headerSubHandler)
 form.addEventListener('submit', submitHandler)
-
+sortTags.addEventListener('click', sortTagHandler)
+sortCaptions.addEventListener('click', sortCaptionHandler)
 
 
 getAllPhotoCards()

@@ -4,7 +4,7 @@ const { getList, addPhoto, deletePhoto } = require('./controller.js')
 
 const app = express()
 
-//create some top-level MIDDLEWARE: every request goes through it
+
 app.use(express.json())
 app.use(cors())
 
